@@ -1,0 +1,26 @@
+{
+    "author": "Tony Flury",
+    "author_username": "TonyFlury",
+    "author_email": "anthony.flury@btinternet.com",
+    "project_name": "Project Name Here",
+    "project_desc":"A short description of the project:",
+    "project_summary":"An expanded description of the project:",
+    "project_usecase":"As a user I want a wonderful widget so that I am happy:",
+    "project_repo": "{{cookiecutter.project_name|lower|replace(' ','')}}",
+    "project_keywords":"jellybeans widgets fluff",
+    "cli":["Yes","No"],
+    "license": ["MIT", "GNU GPL v3.0", "Apache Software License 2.0"],
+    "create_timestamp": "{% now 'utc', '%d %b %Y' %}",
+    "create_year": "{% now 'utc', '%Y' %}",
+    "project_initial_version":"0.0.1a1",
+    "create_external_resources":["Yes","No"],
+    "project_gh": "http://github.com/{{cookiecutter.author_username}}/{{cookiecutter.project_repo}}",
+    "project_ghurl": "git@github.com:{{cookiecutter.author_username}}/{{cookiecutter.project_repo}}.git",
+    "project_docs": "http://{{cookiecutter.project_repo}}.readthedocs.org/en/latest/",
+    "project_pypi": "https://pypi.python.org/pypi/{{cookiecutter.project_repo}}",
+    "project_travis": "https://travis-ci.org/{{cookiecutter.author_username}}/{{cookiecutter.project_repo}}",
+    "Py27":["Yes", "No"],
+    "Py35":["Yes", "No"],
+    "_extensions": ["jinja2_time.TimeExtension"]
+}
+

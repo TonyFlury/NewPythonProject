@@ -1,0 +1,14 @@
+language: python
+python:
+{% if (cookiecutter.Py27 == "Yes") %}
+  - "2.7"
+{% endif %}
+{% if (cookiecutter.Py35 == "Yes") %}
+  - "3.5"
+{% endif %}
+# command to install dependencies
+install:
+  - pip install -r test_requirements.txt
+# command to run tests
+script:
+   - python setup.py test
