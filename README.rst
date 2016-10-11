@@ -1,3 +1,4 @@
+========================================
 New Python Project cookiecutter template
 ========================================
 
@@ -20,11 +21,17 @@ If you find any issues - please let me know.
 Usage
 -----
 
+Direct Use from github
+######################
+
 To use this template directly (without further customisation) : 
 
 .. code-block:: bash
 
     $ cookiecutter gh:TonyFlury/NewPythonProject
+
+Customise before use
+####################
 
 To customise this template before use : 
 
@@ -32,15 +39,15 @@ To customise this template before use :
 
     $ cd Development
     $ git clone git@github.com:TonyFlury/NewPythonProject.git
-    ...
-    Modify the variables defined in cookiecutter.json.
+ 
+Modify the variables defined in cookiecutter.json.
 
-    Open up the skeleton project. If you need to change it around a bit, do so.
+Open up the skeleton project. If you need to change it around a bit, do so.
 
-    You probably also want to create a repo, name it differently, and push it
-    as your own new Cookiecutter project template, for handy future use.
+You probably also want to create a repo, name it differently, and push it
+as your own new Cookiecutter project template, for handy future use.
 
-    Once you have completed your changes - you will generate your new project
-    from the template
+Once you have completed your changes - you will generate your new project
+from the template
 
     $ cookiecutter NewPythonProject 
