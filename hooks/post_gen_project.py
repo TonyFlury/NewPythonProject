@@ -66,7 +66,7 @@ def apply_git():
         print( "Creating remote repository")
         os.system( "git remote add origin {{cookiecutter.project_ghurl}} >/dev/null")
         os.system( "curl -u '{{cookiecutter.author_username}}' https://api.github.com/user/repos -d '{\"name\":\"{{cookiecutter.project_repo}}\",\"description\":\"{{cookiecutter.project_desc}}\"}' >/dev/null")
-        os.system( "git push origin master" )
+        os.system( "git push -u origin master" )
     else:
         print( "Warning : Remote Repository NOT created - as per request")
 
