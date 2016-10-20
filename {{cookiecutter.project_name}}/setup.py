@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 """
-Implementation of setup.py for importjson library
+Implementation of setup.py for {{cookiecutter.project_repo}} library
     ....
 """
 
@@ -62,12 +62,20 @@ setup(
         # that you indicate whether you support Python 2, Python 3 or both.
         #        'Programming Language :: Python :: 2',
         #        'Programming Language :: Python :: 2.6',
+{% if cookiecutter.Py27 %}
         'Programming Language :: Python :: 2.7',
+{% else %}
+        #        'Programming Language :: Python :: 2.7',
+{% endif %}
         #        'Programming Language :: Python :: 3',
         #        'Programming Language :: Python :: 3.2',
         #        'Programming Language :: Python :: 3.3',
         #        'Programming Language :: Python :: 3.4',
+{% if cookiecutter.Py27 %}
         'Programming Language :: Python :: 3.5',
+{% else %}
+        #        'Programming Language :: Python :: 3.5',
+{% endif %}
     ],
 
     # What does your project relate to?
