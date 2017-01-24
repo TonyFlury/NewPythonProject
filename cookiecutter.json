@@ -7,6 +7,7 @@
     "project_summary":"An expanded description of the project:",
     "project_usecase":"As a user I want a wonderful widget so that I am happy:",
     "project_repo": "{{cookiecutter.project_name|lower|replace(' ','')}}",
+    "project_capitalised_repo":"{{cookiecutter.project_name|replace(' ','')}}"
     "project_keywords":"jellybeans widgets fluff",
     "cli":["Yes","No"],
     "license": ["MIT", "GNU GPL v3.0", "Apache Software License 2.0"],
