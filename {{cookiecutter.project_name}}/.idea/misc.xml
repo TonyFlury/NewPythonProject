@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  
+  {%- if cookiecutter.Py35 == "Yes" -%}
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.5 virtualenv at ~/.envs/{{cookiecutter.project_repo}}35" project-jdk-type="Python SDK" />
+  {%- elif cookiecutter.Py27 == "Yes" -%}
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 2.7 virtualenv at ~/.envs/{{cookiecutter.project_repo}}27" project-jdk-type="Python SDK" />
+  {%- endif -%}
+  <component name="SvnBranchConfigurationManager">
+    <option name="mySupportsUserInfoFilter" value="true" />
+  </component>
+</project>
