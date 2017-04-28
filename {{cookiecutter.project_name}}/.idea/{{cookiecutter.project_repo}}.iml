@@ -3,7 +3,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/{{cookiecutter.project_repo}}" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="True" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/docs" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.eggs" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
@@ -16,7 +16,7 @@
       <excludeFolder url="file://$MODULE_DIR$/{{cookiecutter.project_repo}}.egg-info" />
     </content>
     {%- if cookiecutter.Py35 == "Yes" -%}
-    <orderEntry type="jdk" jdkName="Python 3.5 virtualenv at ~/.envs/{{cookiecutter.project_repo}}35" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.5.2 virtualenv at ~/.envs/{{cookiecutter.project_repo}}35" jdkType="Python SDK" />
     {%- elif cookiecutter.Py27 == "Yes" -%}
     <orderEntry type="jdk" jdkName="Python 2.7.12 virtualenv at ~/.envs/{{cookiecutter.project_repo}}27" jdkType="Python SDK" />
     {%- endif -%}
