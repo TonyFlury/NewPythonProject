@@ -232,9 +232,9 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
     {%- if cookiecutter.Py27 == "Yes" -%}
-    <property name="last_opened_file_path" value="$USER_HOME$/.envs/cock127/bin/python2.7" />
+    <property name="last_opened_file_path" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}27/bin/python2.7" />
     {%- elif cookiecutter.Py35 == "Yes" -%}
-    <property name="last_opened_file_path" value="$USER_HOME$/.envs/cock135/bin/python3.5" />
+    <property name="last_opened_file_path" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}35/bin/python3.5" />
     {%- endif -%}   
     <property name="last_opened_file_path" value="$PROJECT_DIR$/sandbox" />
     <property name="restartRequiresConfirmation" value="true" />
@@ -278,7 +278,11 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}/bin/python2.7" />
+      {%- if cookiecutter.Py27 == "Yes" -%}
+        <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}27/bin/python2.7" />
+      {%- if cookiecutter.Py35 == "Yes" -%}
+        <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}35/bin/python3.5" />
+      {%-  elif -%}
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/{{cookiecutter.project_repo}}" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -295,7 +299,11 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}/bin/python2.7" />
+      {%- if cookiecutter.Py27 == "Yes" -%}
+        <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}27/bin/python2.7" />
+      {%- if cookiecutter.Py35 == "Yes" -%}
+        <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}35/bin/python3.5" />
+      {%-  elif -%}
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
