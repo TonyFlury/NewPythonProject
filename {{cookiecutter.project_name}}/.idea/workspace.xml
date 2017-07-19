@@ -231,12 +231,6 @@
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
-    {%- if cookiecutter.Py27 == "Yes" -%}
-    <property name="last_opened_file_path" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}27/bin/python2.7" />
-    {%- elif cookiecutter.Py35 == "Yes" -%}
-    <property name="last_opened_file_path" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}35/bin/python3.5" />
-    {%- endif -%}   
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/sandbox" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="344" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
@@ -257,14 +251,16 @@
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
-      <console-settings module-name="{{cookiecutter.project_repo}}" sdk-home="$USER_HOME$/.envs/{{cookiecutter.project_repo}}/bin/python2.7" working-directory="$PROJECT_DIR$/tests">
        {%- if cookiecutter.Py27 == "Yes" -%}
+             <console-settings module-name="{{cookiecutter.project_repo}}" sdk-home="$USER_HOME$/.envs/{{cookiecutter.project_repo}}27/bin/python2.7" working-directory="$PROJECT_DIR$/pyorm"/>
             <option name="mySdkHome" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}27/bin/python2.7" />
-        {%- elif cookiecutter.Py35 == "Yes" -%}
+        {%- endif -%}
+        {%- if cookiecutter.Py35 == "Yes" -%}
+             <console-settings module-name="{{cookiecutter.project_repo}}" sdk-home="$USER_HOME$/.envs/{{cookiecutter.project_repo}}35/bin/python3.5" working-directory="$PROJECT_DIR$/pyorm"/>
             <option name="mySdkHome" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}35/bin/python3.5" />
         {%- endif -%}
             <option name="myModuleName" value="{{cookiecutter.project_repo}}" />
-        <option name="myWorkingDirectory" value="$PROJECT_DIR$/tests" />
+        <option name="myWorkingDirectory" value="$PROJECT_DIR$/pyorm" />
         <option name="myAddSourceRoots" value="true" />
       </console-settings>
     </option>
@@ -280,9 +276,10 @@
       </envs>
       {%- if cookiecutter.Py27 == "Yes" -%}
         <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}27/bin/python2.7" />
+              {%-  endif -%}
       {%- if cookiecutter.Py35 == "Yes" -%}
         <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}35/bin/python3.5" />
-      {%-  elif -%}
+      {%-  endif -%}
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/{{cookiecutter.project_repo}}" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -300,10 +297,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       {%- if cookiecutter.Py27 == "Yes" -%}
-        <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}27/bin/python2.7" />
+            <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}27/bin/python2.7" />
+      {%-  endif -%}
       {%- if cookiecutter.Py35 == "Yes" -%}
-        <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}35/bin/python3.5" />
-      {%-  elif -%}
+          <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}35/bin/python3.5" />
+      {%-  endif -%}
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
