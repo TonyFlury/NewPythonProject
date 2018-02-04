@@ -1,2 +1,2 @@
 # coding=utf-8
-from .{{project_repo}} import *
+from .{{cookiecutter.project_repo}} import *

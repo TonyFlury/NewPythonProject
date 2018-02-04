@@ -82,7 +82,7 @@ def apply_virtualenv():
              stderr=subprocess.STDOUT)
         subprocess.call(['/bin/bash', '-i', '-c', 'setvirtualenvproject {virtual_env} {project_path}'.format(
                             virtual_env='$WORKON_HOME/{{cookiecutter.project_repo}}27',
-                            project_path=PROJECT_DIRECTORY],
+                            project_path=PROJECT_DIRECTORY)],
              stdout=sys.stdout,
              stderr=subprocess.STDOUT)
     if "{{cookiecutter.Py3}}" == "Yes":
@@ -92,7 +92,7 @@ def apply_virtualenv():
              stderr=subprocess.STDOUT)
         subprocess.call(['/bin/bash', '-i', '-c', 'setvirtualenvproject {virtual_env} {project_path}'.format(
                             virtual_env='$WORKON_HOME/{{cookiecutter.project_repo}}35',
-                            project_path=PROJECT_DIRECTORY],
+                            project_path=PROJECT_DIRECTORY)],
              stdout=sys.stdout,
              stderr=subprocess.STDOUT)
         print("Creating Python 3.6 environment")
@@ -101,7 +101,7 @@ def apply_virtualenv():
              stderr=subprocess.STDOUT)
         subprocess.call(['/bin/bash', '-i', '-c', 'setvirtualenvproject {virtual_env} {project_path}'.format(
                             virtual_env='$WORKON_HOME/{{cookiecutter.project_repo}}36',
-                            project_path=PROJECT_DIRECTORY],
+                            project_path=PROJECT_DIRECTORY)],
              stdout=sys.stdout,
              stderr=subprocess.STDOUT)
 
