@@ -11,12 +11,12 @@ Use Case :
 Testable Statements :
     ...
 """
+import inspect
 import unittest
 import re
 import click
 
 import {{cookiecutter.project_repo}}
-
 
 class OrderedTestSuite(unittest.TestSuite):
     def __iter__(self):

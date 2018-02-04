@@ -1,4 +1,4 @@
-
+# coding=utf-8
 
 __version__ = '{{cookiecutter.project_initial_version}}'
 __release__ = '{{cookiecutter.project_initial_release}}'
