@@ -11,7 +11,7 @@ from setuptools import setup, find_packages
 from codecs import open
 from os import path
 
-import {{cookiecutter.project_repo}}.version
+from {{cookiecutter.project_repo}}.version import __version__ as version
 
 __author__ = '{{cookiecutter.author}} {{cookiecutter.author_email}}'
 __created__ = '{{cookiecutter.create_timestamp}}'
@@ -28,7 +28,6 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version={{cookiecutter.project_repo}}.version.__version__,
 
     description='{{cookiecutter.project_name}}: {{cookiecutter.project_summary}}',
     long_description=long_description,

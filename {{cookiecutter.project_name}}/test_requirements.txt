@@ -1,3 +1,5 @@
+click
 flake8
 tox
 sphinx-rtd-theme
+coverage

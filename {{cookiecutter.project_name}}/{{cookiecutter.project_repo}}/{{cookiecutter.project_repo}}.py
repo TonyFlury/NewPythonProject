@@ -13,7 +13,5 @@ Testable Statements :
     ...
 """
 
-from version import __version__
+from . version import *
 
-__author__ = "{{cookiecutter.author}} {{cookiecutter.author_email}}"
-__created__ = "{{cookiecutter.create_timestamp}}"

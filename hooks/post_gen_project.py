@@ -45,15 +45,7 @@ def apply_git():
     os.system( "git add {{cookiecutter.project_repo}}/*.py" )
     os.system( "git add tests/*.py" )
     os.system( "git add docs/*.rst" )
-    os.system( "git add README.rst" )
-    os.system( "git add CONTRIBUTING.rst" )
-    os.system( "git add setup.py" )
-    os.system( "git add tox.ini")
-    os.system( "git add .gitignore")
-    os.system( "git add .travis.yml")
-    os.system( "git add LICENSE.rst")
-    os.system( "git add requirements.txt")
-    os.system( "git add test_requirements.txt")
+    os.system( "git add *" )
 
     # Perform initial commit project files
     print("\n--------------")
@@ -75,13 +67,8 @@ def apply_requirements():
     """Add any additional requirements to the various requirements.txt file"""
     with open(os.path.join(PROJECT_DIRECTORY,"test_requirements.txt"),"a") as test_req, open(os.path.join(PROJECT_DIRECTORY,"requirements.txt"),"a") as req:
 
-        # Add click library for cli based applications
-        if "{{cookiecutter.cli}}" == "Yes":
-            req.write("click>=6.6\n")
-            test_req.write("click>=6.6\n")
-
         # Add six if Py27 and Py35 are both required
-        if "{{cookiecutter.Py27}}" == "Yes" and "{{cookiecutter.Py35}}" == "Yes":
+        if "{{cookiecutter.Py27}}" == "Yes" and "{{cookiecutter.Py3}}" == "Yes":
             req.write("six>=1.10\n")
             test_req.write("six>=1.10\n")
 
@@ -93,13 +80,30 @@ def apply_virtualenv():
         subprocess.call(['/bin/bash', '-i', '-c', "mkvirtualenv -r '{test_req}' -p /usr/bin/python2.7 {{cookiecutter.project_repo}}27".format(test_req=TEST_REQ_PATH)],
              stdout=sys.stdout,
              stderr=subprocess.STDOUT)
-
-    if "{{cookiecutter.Py35}}" == "Yes":
+        subprocess.call(['/bin/bash', '-i', '-c', 'setvirtualenvproject {virtual_env} {project_path}'.format(
+                            virtual_env='$WORKON_HOME/{{cookiecutter.project_repo}}27',
+                            project_path=PROJECT_DIRECTORY],
+             stdout=sys.stdout,
+             stderr=subprocess.STDOUT)
+    if "{{cookiecutter.Py3}}" == "Yes":
         print("Creating Python 3.5 environment")
         subprocess.call(['/bin/bash', '-i', '-c', "mkvirtualenv -r '{test_req}' -p /usr/bin/python3.5 {{cookiecutter.project_repo}}35".format(test_req=TEST_REQ_PATH)],
              stdout=sys.stdout,
              stderr=subprocess.STDOUT)
-
+        subprocess.call(['/bin/bash', '-i', '-c', 'setvirtualenvproject {virtual_env} {project_path}'.format(
+                            virtual_env='$WORKON_HOME/{{cookiecutter.project_repo}}35',
+                            project_path=PROJECT_DIRECTORY],
+             stdout=sys.stdout,
+             stderr=subprocess.STDOUT)
+        print("Creating Python 3.6 environment")
+        subprocess.call(['/bin/bash', '-i', '-c', "mkvirtualenv -r '{test_req}' -p /usr/bin/python3.6 {{cookiecutter.project_repo}}36".format(test_req=TEST_REQ_PATH)],
+             stdout=sys.stdout,
+             stderr=subprocess.STDOUT)
+        subprocess.call(['/bin/bash', '-i', '-c', 'setvirtualenvproject {virtual_env} {project_path}'.format(
+                            virtual_env='$WORKON_HOME/{{cookiecutter.project_repo}}36',
+                            project_path=PROJECT_DIRECTORY],
+             stdout=sys.stdout,
+             stderr=subprocess.STDOUT)
 
 def add_bug_reporting():
     """Add the Bug reporting section to the README.rst"""

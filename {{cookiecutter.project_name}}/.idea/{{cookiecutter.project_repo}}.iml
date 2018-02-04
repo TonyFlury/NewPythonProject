@@ -15,10 +15,11 @@
       <excludeFolder url="file://$MODULE_DIR$/htmlcov" />
       <excludeFolder url="file://$MODULE_DIR$/{{cookiecutter.project_repo}}.egg-info" />
     </content>
-    {%- if cookiecutter.Py35 == "Yes" -%}
-    <orderEntry type="jdk" jdkName="Python 3.5.2 virtualenv at ~/.envs/{{cookiecutter.project_repo}}35" jdkType="Python SDK" />
+    {%- if cookiecutter.Py3 == "Yes" -%}
+    <orderEntry type="jdk" jdkName="Python 3.5 virtualenv at ~/.envs/{{cookiecutter.project_repo}}35" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.6 virtualenv at ~/.envs/{{cookiecutter.project_repo}}36" jdkType="Python SDK" />
     {%- elif cookiecutter.Py27 == "Yes" -%}
-    <orderEntry type="jdk" jdkName="Python 2.7.12 virtualenv at ~/.envs/{{cookiecutter.project_repo}}27" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 2.7 virtualenv at ~/.envs/{{cookiecutter.project_repo}}27" jdkType="Python SDK" />
     {%- endif -%}
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
