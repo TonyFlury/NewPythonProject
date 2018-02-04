@@ -59,21 +59,17 @@ setup(
 
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
-        #        'Programming Language :: Python :: 2',
-        #        'Programming Language :: Python :: 2.6',
 {% if cookiecutter.Py27 == 'Yes' %}
         'Programming Language :: Python :: 2.7',
 {% else %}
         #        'Programming Language :: Python :: 2.7',
 {% endif %}
-        #        'Programming Language :: Python :: 3',
-        #        'Programming Language :: Python :: 3.2',
-        #        'Programming Language :: Python :: 3.3',
-        #        'Programming Language :: Python :: 3.4',
-{% if cookiecutter.Py35 == 'Yes' %}
+{% if cookiecutter.Py3 == 'Yes' %}
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
 {% else %}
         #        'Programming Language :: Python :: 3.5',
+        #        'Programming Language :: Python :: 3.6',
 {% endif %}
     ],
 
