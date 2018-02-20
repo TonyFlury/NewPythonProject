@@ -12,6 +12,7 @@ Testable Statements :
     ...
 """
 import inspect
+import re
 import unittest
 import re
 import click
