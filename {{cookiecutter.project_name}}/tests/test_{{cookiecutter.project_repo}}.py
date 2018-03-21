@@ -16,14 +16,12 @@ import re
 import unittest
 import re
 import click
-
-import {{cookiecutter.project_repo}}
+import sys
+from {{cookiecutter.project_repo}} import {{cookiecutter.project_repo}}
 
 class OrderedTestSuite(unittest.TestSuite):
     def __iter__(self):
         return iter(sorted(self._tests, key=lambda x:str(x)))
-
-
 
 class TestCases(unittest.TestCase):
     def setUp(self):
