@@ -12,10 +12,10 @@
   </component>
   
   {%- if cookiecutter.Py3 == "Yes" -%}
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.5 virtualenv at ~/.envs/{{cookiecutter.project_repo}}35" project-jdk-type="Python SDK" />
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.6 virtualenv at ~/.envs/{{cookiecutter.project_repo}}36" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.5 ({{cookiecutter.project_repo}}35)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.6 ({{cookiecutter.project_repo}}36)" project-jdk-type="Python SDK" />
   {%- elif cookiecutter.Py27 == "Yes" -%}
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 2.7 virtualenv at ~/.envs/{{cookiecutter.project_repo}}27" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 2.7 ({{cookiecutter.project_repo}}27)" project-jdk-type="Python SDK" />
   {%- endif -%}
   <component name="SvnBranchConfigurationManager">
     <option name="mySupportsUserInfoFilter" value="true" />
