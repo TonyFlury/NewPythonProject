@@ -21,12 +21,14 @@ LICENSE_PATH = os.path.join(PROJECT_DIRECTORY,"LICENSE.rst")
 def apply_license():
     """ Rename appropriate license file, and delete un needed files"""
 
-    license_files={"MIT":"MIT License", "GNU GPL v3.0":"GNU GPL v3.0 License", "Apache Software License 2.0":"Apache Software License 2.0"}
+    license_files={"MIT":"MIT License",
+                "GNU GPL v3.0":"GNU GPL v3.0 License",
+                "Apache Software License 2.0":"Apache Software License 2.0"}
 
     print("\n-------------------------------------")
     print("Apply chosen license")
     
-    for li_name, li_file in license_files.iteritems():
+    for li_name, li_file in license_files.items():
         if li_name == "{{cookiecutter.license}}":
             os.rename(os.path.join(PROJECT_DIRECTORY,li_file), 
                       LICENSE_PATH )
@@ -57,7 +59,13 @@ def apply_git():
         print("\n---------------------------")
         print( "Creating remote repository")
         os.system( "git remote add origin {{cookiecutter.project_ghurl}} >/dev/null")
-        os.system( "curl -u '{{cookiecutter.author_username}}' https://api.github.com/user/repos -d '{\"name\":\"{{cookiecutter.project_repo}}\",\"description\":\"{{cookiecutter.project_desc}}\"}' >/dev/null")
+        a = 'curl -u \'{{cookiecutter.author_username}}\' ' \
+                    'https://api.github.com/user/repos ' \
+                    '-d\'{"name":"{{cookiecutter.project_repo}}", ' \
+                    '"description":"{{cookiecutter.project_desc}}"}\' ' \
+                    ' >/dev/null'
+        print(a)
+        os.system( a )
         os.system( "git push -u origin master" )
     else:
         print( "Warning : Remote Repository NOT created - as per request")
@@ -65,45 +73,49 @@ def apply_git():
 
 def apply_requirements():
     """Add any additional requirements to the various requirements.txt file"""
-    with open(os.path.join(PROJECT_DIRECTORY,"test_requirements.txt"),"a") as test_req, open(os.path.join(PROJECT_DIRECTORY,"requirements.txt"),"a") as req:
+    with open(os.path.join(PROJECT_DIRECTORY,"test_requirements.txt"),"a") \
+            as test_req, \
+        open(os.path.join(PROJECT_DIRECTORY,"requirements.txt"),"a") as req:
 
-        # Add six if Py27 and Py35 are both required
-        if "{{cookiecutter.Py27}}" == "Yes" and "{{cookiecutter.Py3}}" == "Yes":
-            req.write("six>=1.10\n")
-            test_req.write("six>=1.10\n")
+        if "{{cookiecutter.cli}}" == "Yes":
+            req.write("click>=7.0\n")
+
+        if "{{cookiecutter.wx_Gui}}" == "Yes":
+            req.write("wxPython>=4.0\n")
+            test_req.write("wxPython>=4.0\\n")
 
 def apply_virtualenv():
     print("\n-----------------------")
     print("Initialising virtualenv")
-    if "{{cookiecutter.Py27}}" == "Yes":
-        print("Creating Python 2.7 environment")
-        subprocess.call(['/bin/bash', '-i', '-c', "mkvirtualenv -r '{test_req}' -p /usr/bin/python2.7 {{cookiecutter.project_repo}}27".format(test_req=TEST_REQ_PATH)],
-             stdout=sys.stdout,
-             stderr=subprocess.STDOUT)
-        subprocess.call(['/bin/bash', '-i', '-c', 'setvirtualenvproject {virtual_env} {project_path}'.format(
-                            virtual_env='$WORKON_HOME/{{cookiecutter.project_repo}}27',
-                            project_path=PROJECT_DIRECTORY)],
-             stdout=sys.stdout,
-             stderr=subprocess.STDOUT)
-    if "{{cookiecutter.Py3}}" == "Yes":
-        print("Creating Python 3.5 environment")
-        subprocess.call(['/bin/bash', '-i', '-c', "mkvirtualenv -r '{test_req}' -p /usr/bin/python3.5 {{cookiecutter.project_repo}}35".format(test_req=TEST_REQ_PATH)],
-             stdout=sys.stdout,
-             stderr=subprocess.STDOUT)
-        subprocess.call(['/bin/bash', '-i', '-c', 'setvirtualenvproject {virtual_env} {project_path}'.format(
-                            virtual_env='$WORKON_HOME/{{cookiecutter.project_repo}}35',
-                            project_path=PROJECT_DIRECTORY)],
-             stdout=sys.stdout,
-             stderr=subprocess.STDOUT)
-        print("Creating Python 3.6 environment")
-        subprocess.call(['/bin/bash', '-i', '-c', "mkvirtualenv -r '{test_req}' -p /usr/bin/python3.6 {{cookiecutter.project_repo}}36".format(test_req=TEST_REQ_PATH)],
-             stdout=sys.stdout,
-             stderr=subprocess.STDOUT)
-        subprocess.call(['/bin/bash', '-i', '-c', 'setvirtualenvproject {virtual_env} {project_path}'.format(
-                            virtual_env='$WORKON_HOME/{{cookiecutter.project_repo}}36',
-                            project_path=PROJECT_DIRECTORY)],
-             stdout=sys.stdout,
-             stderr=subprocess.STDOUT)
+    versions = {'Python3.6': ('/usr/bin/python3.6', '3.6'),
+                'Python3.7': ('/usr/bin/python3.7', '3.7'),
+                'Python3.8': ('/usr/bin/python3.8', '3.8'),
+                'pypy3': ('/usr/bin/pypy3', 'pypy3'),
+                }
+    for version, data in versions.items():
+
+            path, abbreviation = data
+
+            if os.path.exists( path ):
+                print("Creating {} environment".format(version))
+
+                subprocess.call(['/bin/bash', '-i', '-c',
+                        "mkvirtualenv -r '{test_req}' -p {path} "
+                        "{{cookiecutter.project_repo}}_{abbrev}".format(
+                                test_req=TEST_REQ_PATH,
+                                path=path,
+                                abbrev=abbreviation)],
+                        stdout=sys.stdout,
+                        stderr=subprocess.STDOUT)
+                a = ['/bin/bash', '-i', '-c',
+                                 'setvirtualenvproject {virtual_env} '
+                                 '"{project_path}"'.format(
+                                    virtual_env='$WORKON_HOME/{{cookiecutter.project_repo}}_{abbrev}'.format(abbrev=abbreviation),
+                                    project_path=PROJECT_DIRECTORY)]
+                print(a)
+                subprocess.call( a,
+                     stdout=sys.stdout,
+                     stderr=subprocess.STDOUT)
 
 def add_bug_reporting():
     """Add the Bug reporting section to the README.rst"""
@@ -120,7 +132,7 @@ by email to : `{{cookiecutter.author}} <mailto:{{cookiecutter.author_email}}?Sub
 
     with open(os.path.join(PROJECT_DIRECTORY,"README.rst"), "a") as readme:
         readme.write("+" + "-"*max_len + "+\n")
-        readme.write("|" + " "*(max_len/2-2) + "Bugs" + " "*(max_len/2-2) + "+\n")
+        readme.write("|" + " "*(int(max_len/2)-2) + "Bugs" + " "*(int(max_len/2)-2) + "+\n")
         readme.write("+" + "="*max_len + "+\n")
         for l in section:
             readme.write("|" + l + " "*(max_len-len(l)) + "|\n")
@@ -135,5 +147,6 @@ apply_requirements()
 apply_git()
 
 apply_virtualenv()
+
 
 

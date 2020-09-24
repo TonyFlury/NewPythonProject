@@ -251,19 +251,11 @@
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
-       {%- if cookiecutter.Py27 == "Yes" -%}
-             <console-settings module-name="{{cookiecutter.project_repo}}" sdk-home="$USER_HOME$/.envs/{{cookiecutter.project_repo}}27/bin/python2.7" working-directory="$PROJECT_DIR$/{{cookiecutter.project_repo}}"/>
-            <option name="mySdkHome" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}27/bin/python2.7" />
-        {%- endif -%}
-        {%- if cookiecutter.Py3 == "Yes" -%}
-             <console-settings module-name="{{cookiecutter.project_repo}}" sdk-home="$USER_HOME$/.envs/{{cookiecutter.project_repo}}35/bin/python3.5" working-directory="$PROJECT_DIR$/{{cookiecutter.project_repo}}"/>
-            <option name="mySdkHome" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}35/bin/python3.5" />
-        {%- endif -%}
+            <console-settings module-name="{{cookiecutter.project_repo}}" sdk-home="$USER_HOME$/.envs/{{cookiecutter.project_repo}}35/bin/python3.7" working-directory="$PROJECT_DIR$/{{cookiecutter.project_repo}}"/>
+            <option name="mySdkHome" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}_37/bin/python3.7" />
             <option name="myModuleName" value="{{cookiecutter.project_repo}}" />
         <option name="myWorkingDirectory" value="$PROJECT_DIR$/{{cookiecutter.project_repo}}" />
         <option name="myAddSourceRoots" value="true" />
-    </option>
-      </console-settings>
     </option>
   </component>
   <component name="RecentsManager">
@@ -275,13 +267,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      {%- if cookiecutter.Py27 == "Yes" -%}
-        <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}27/bin/python2.7" />
-              {%-  endif -%}
-      {%- if cookiecutter.Py3 == "Yes" -%}
-        <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}35/bin/python3.5" />
-        <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}36/bin/python3.6" />
-      {%-  endif -%}
+        <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}_37/bin/python3.7" />
+        <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}_38/bin/python3.8" />
+        <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}_pypy3/bin/pypy3" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/{{cookiecutter.project_repo}}" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -298,13 +286,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      {%- if cookiecutter.Py27 == "Yes" -%}
-            <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}27/bin/python2.7" />
-      {%-  endif -%}
-      {%- if cookiecutter.Py3 == "Yes" -%}
-          <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}35/bin/python3.5" />
-          <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}36/bin/python3.6" />
-      {%-  endif -%}
+          <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}_37/bin/python3.7" />
+          <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}_38/bin/python3.8" />
+          <option name="SDK_HOME" value="$USER_HOME$/.envs/{{cookiecutter.project_repo}}_pypy3/bin/pypy3" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />

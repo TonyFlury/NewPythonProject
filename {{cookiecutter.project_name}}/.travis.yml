@@ -1,12 +1,8 @@
 language: python
-python:
-{% if (cookiecutter.Py27 == "Yes") %}
-  - "2.7"
-{% endif %}
-{% if (cookiecutter.Py3 == "Yes") %}
-  - "3.5"
-  - "3.6"
-{% endif %}
+  - "3.7"
+  - "3.8"
+  - "pypy3"
+
 # command to install dependencies
 install:
   - pip install -r test_requirements.txt
